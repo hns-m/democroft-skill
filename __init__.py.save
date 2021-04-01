@@ -1,0 +1,23 @@
+from mycroft import MycroftSkill, intent_file_handler
+
+
+class Democroft(MycroftSkill):
+    def __init__(self):
+       MycroftSkill.__init__(self)
+
+    @intent_file_handler('democroft.intent')
+    def handle_democroft(self, message):
+        message = str(message.data.get('utterance'))
+        self.speak_dialog('democroft')
+        self.log.warning(message)
+
+    @intent_file_handler('stop.intent')
+    def handle_stop(self,message):
+        message = str(message.data.get('utterance'))
+        self.speak_dialog('stop')
+        self.log.warning(message)
+
+
+
+def create_skill():
+    return Democroft()
