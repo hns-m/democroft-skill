@@ -27,6 +27,12 @@ class Democroft(MycroftSkill):
            self.log.warning("inside msg == NONE") 
            return
         if msg == "stop":
+           session = self.url+"uid ="+str(self.convoID)+"&text=clear session"
+           r = requests.get(session)
+           #r-----> Error Handling to be done
+           self.speak("Thank You for interacting with bot")
+           self.speak("Now exiting")
+
            return 
          # Else reset messages
         #self.messages = []
@@ -57,7 +63,7 @@ class Democroft(MycroftSkill):
         #url1=urljoin(self.url,"?uid=100")
         #self.log.warning("url1:"+url1)
         #url2 = urljoin(url1,"&text=")
-       ## self.log.warning("url2:"+url2)
+        # self.log.warning("url2:"+url2)
         #url3 = urljoin(url2,msg)
         url3 = self.url+"uid ="+str(self.convoID)+"&text="+msg
         self.log.warning("url3:"+url3)
